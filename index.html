@@ -1,255 +1,2459 @@
-export default function ShineshProfilePage() {
-  const skills = [
-    "Investing & Stock Market Analysis",
-    "Accounting & Finance",
-    "Marketing",
-    "Business Thinking",
-    "Communication",
-    "Editing & Design"
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  const interests = [
-    "Stock Market",
-    "Textile Industry",
-    "Technology",
-    "Anime",
-    "Entrepreneurship",
-    "Laptop Customization"
-  ];
+    <title>Shinesh Kannan | Finance & Investment Portfolio</title>
 
-  const goals = [
-    "Become a successful businessman",
-    "Build a strong textile brand",
-    "Master investing and finance",
-    "Grow multiple income sources",
-    "Develop leadership skills"
-  ];
+    <meta name="description"
+          content="Portfolio of Shinesh Kannan - B.Com Strategic Finance student, Financial Analyst Intern and investment enthusiast.">
 
-  return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10"></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      {/* Hero Section */}
-      <section className="relative z-10 px-6 md:px-16 py-20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="uppercase tracking-[6px] text-cyan-400 text-sm mb-4">
-              Future Entrepreneur
-            </p>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
-              SHINESH
-            </h1>
+    <style>
 
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              A finance-focused student with an entrepreneurial mindset. Strong interest in investing, textiles, marketing, and technology. Always exploring ways to build businesses, improve skills, and think long-term.
-            </p>
+        /* =========================================================
+           ROOT
+        ========================================================= */
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <p className="text-gray-400 text-sm">Phone Number</p>
-                <h3 className="text-lg font-semibold mt-1">
-                  +91 90038 43868
-                </h3>
-              </div>
+        :root {
+            --navy: #081a33;
+            --navy-2: #0d2748;
+            --blue: #1f4e79;
+            --gold: #c9a227;
+            --gold-light: #e5c65a;
+            --white: #ffffff;
+            --off-white: #f7f9fc;
+            --text: #172033;
+            --muted: #64748b;
+            --border: #e4e9f0;
+            --card: #ffffff;
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <p className="text-gray-400 text-sm">College</p>
-                <h3 className="text-lg font-semibold mt-1">
-                  St. Joseph's College, Trichy
-                </h3>
-              </div>
+            --shadow:
+                0 20px 50px rgba(8, 26, 51, 0.10);
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 sm:col-span-2">
-                <p className="text-gray-400 text-sm">Degree</p>
-                <h3 className="text-lg font-semibold mt-1">
-                  B.Com (Strategic Finance) with US CMA
-                </h3>
-              </div>
+            --transition:
+                all 0.35s ease;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(34px, 5vw, 50px);
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            max-width: 650px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(228,233,240,0.8);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: 0 8px 30px rgba(8,26,51,0.08);
+        }
+
+        nav {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--navy);
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            color: #445268;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 28px;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(201,162,39,0.12), transparent 25%),
+                linear-gradient(135deg, #f8fafc 0%, #ffffff 55%, #f4f7fb 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 76px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(31,78,121,0.08);
+            border-radius: 50%;
+            right: -180px;
+            top: 120px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 1px solid rgba(201,162,39,0.12);
+            border-radius: 50%;
+            right: -80px;
+            top: 195px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blue);
+            background: rgba(31,78,121,0.08);
+            border: 1px solid rgba(31,78,121,0.12);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(50px, 7vw, 86px);
+            line-height: 0.98;
+            color: var(--navy);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2vw, 23px);
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-description {
+            color: var(--muted);
+            max-width: 620px;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            color: white;
+            background: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(8,26,51,0.2);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--navy);
+            color: var(--navy);
+            background: white;
+        }
+
+        .btn-outline:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+
+        /* =========================================================
+           HERO CARD
+        ========================================================= */
+
+        .finance-card {
+            position: relative;
+            z-index: 2;
+            background: var(--navy);
+            border-radius: 18px;
+            padding: 34px;
+            color: white;
+            box-shadow: 0 30px 70px rgba(8,26,51,0.25);
+            overflow: hidden;
+            animation: floatCard 5s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%,100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .finance-card::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            right: -90px;
+            top: -90px;
+        }
+
+        .finance-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .finance-card-title {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b8c4d3;
+        }
+
+        .gold-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .metric-main {
+            margin-bottom: 30px;
+        }
+
+        .metric-main small {
+            color: #aab8c9;
+            font-size: 12px;
+        }
+
+        .metric-main h3 {
+            font-size: 42px;
+            margin-top: 4px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 12px;
+        }
+
+        .metric {
+            padding: 17px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+        }
+
+        .metric small {
+            display: block;
+            color: #9eacbd;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric strong {
+            display: block;
+            margin-top: 4px;
+            font-size: 16px;
+            color: white;
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+            background: var(--navy);
+            padding: 28px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+
+        .stat {
+            text-align: center;
+            padding: 12px 20px;
+            border-right: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .stat-label {
+            color: #aab7c7;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-box {
+            background: var(--off-white);
+            border-left: 4px solid var(--gold);
+            padding: 35px;
+        }
+
+        .about-box h3 {
+            color: var(--navy);
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .about-box p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .focus-list {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .focus-item {
+            padding: 13px 15px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--navy);
+            background: white;
+        }
+
+        .focus-item::before {
+            content: "◆";
+            color: var(--gold);
+            margin-right: 8px;
+            font-size: 8px;
+        }
+
+
+        /* =========================================================
+           EDUCATION
+        ========================================================= */
+
+        .education {
+            background: var(--off-white);
+        }
+
+        .education-card {
+            margin-top: 45px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+        }
+
+        .education-card h3 {
+            color: var(--navy);
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .degree {
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .education-date {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .cgpa {
+            text-align: center;
+            min-width: 120px;
+            padding: 18px;
+            border-radius: 10px;
+            background: var(--navy);
+            color: white;
+        }
+
+        .cgpa strong {
+            display: block;
+            color: var(--gold-light);
+            font-size: 28px;
+        }
+
+        .cgpa span {
+            font-size: 10px;
+            color: #b7c2d0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .academic-marks {
+            display: flex;
+            gap: 30px;
+            margin-top: 25px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        .mark strong {
+            display: block;
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .mark span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+
+        /* =========================================================
+           EXPERIENCE
+        ========================================================= */
+
+        .experience {
+            background: white;
+        }
+
+        .timeline {
+            margin-top: 50px;
+            border-left: 2px solid var(--border);
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -44px;
+            top: 4px;
+            width: 15px;
+            height: 15px;
+            background: var(--gold);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--gold);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .timeline h3 {
+            font-size: 22px;
+            color: var(--navy);
+            margin: 7px 0;
+        }
+
+        .timeline-company {
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .timeline ul {
+            list-style: disc;
+            padding-left: 18px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .timeline li {
+            margin-bottom: 7px;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .projects {
+            background: var(--off-white);
+        }
+
+        .project-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+            border-color: rgba(201,162,39,0.5);
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .project-card:hover::before {
+            height: 100%;
+        }
+
+        .project-number {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .project-card h3 {
+            color: var(--navy);
+            font-size: 21px;
+            margin: 8px 0 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 9px;
+            border-radius: 4px;
+            background: #edf3f8;
+            color: var(--blue);
+        }
+
+
+        /* =========================================================
+           RUPEE THEORY
+        ========================================================= */
+
+        .rupee {
+            background: var(--navy);
+            color: white;
+            overflow: hidden;
+        }
+
+        .rupee .section-title {
+            color: white;
+        }
+
+        .rupee .section-description {
+            color: #afbdcd;
+        }
+
+        .rupee-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .rupee-symbol {
+            width: 230px;
+            height: 230px;
+            margin: auto;
+            border-radius: 50%;
+            border: 1px solid rgba(201,162,39,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .rupee-symbol::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .rupee-symbol span {
+            font-family: "Playfair Display", serif;
+            color: var(--gold-light);
+            font-size: 100px;
+            position: relative;
+        }
+
+        .rupee-points {
+            display: grid;
+            gap: 13px;
+        }
+
+        .rupee-point {
+            padding: 17px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px;
+            color: #d0d9e4;
+            font-size: 14px;
+        }
+
+        .rupee-point strong {
+            color: white;
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skills {
+            background: white;
+        }
+
+        .skills-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-card h3 {
+            color: var(--navy);
+            margin-bottom: 18px;
+            font-size: 17px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill {
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            color: #45546a;
+            padding: 7px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           CERTIFICATIONS
+        ========================================================= */
+
+        .certifications {
+            background: var(--off-white);
+        }
+
+        .cert-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 16px;
+        }
+
+        .cert-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+
+        .cert-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .cert-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--gold-light);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .cert-card h3 {
+            color: var(--navy);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .cert-card p {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .cert-highlight {
+            border: 2px solid var(--gold);
+            background:
+                linear-gradient(135deg, #ffffff, #fffdf4);
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            background: var(--navy);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-description {
+            color: #b1bece;
+        }
+
+        .contact-details {
+            display: grid;
+            gap: 13px;
+        }
+
+        .contact-item {
+            padding: 17px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .contact-item span {
+            display: block;
+            color: #8f9fb1;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item a,
+        .contact-item strong {
+            display: block;
+            margin-top: 4px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold-light);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: #051326;
+            padding: 25px 0;
+            color: #8492a4;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+
+        /* =========================================================
+           REVEAL ANIMATION
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 25px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border);
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .contact-grid,
+            .rupee-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 110px;
+                padding-bottom: 80px;
+            }
+
+            .hero-card {
+                max-width: 550px;
+            }
+
+            .project-grid,
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .finance-card {
+                padding: 25px;
+            }
+
+            .education-card {
+                grid-template-columns: 1fr;
+            }
+
+            .cgpa {
+                width: 130px;
+            }
+
+            .academic-marks {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .contact-grid {
+                gap: 40px;
+            }
+
+            .rupee-symbol {
+                width: 180px;
+                height: 180px;
+            }
+
+            .rupee-symbol::before {
+                width: 140px;
+                height: 140px;
+            }
+
+            .rupee-symbol span {
+                font-size: 75px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header id="header">
+
+    <div class="container">
+
+        <nav>
+
+            <a href="#home" class="logo">
+                SHINESH<span>.</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li><a href="#about">About</a></li>
+
+                <li><a href="#education">Education</a></li>
+
+                <li><a href="#experience">Experience</a></li>
+
+                <li><a href="#projects">Projects</a></li>
+
+                <li><a href="#skills">Skills</a></li>
+
+                <li><a href="#certifications">Certifications</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+            <div class="hero-content reveal">
+
+                <div class="eyebrow">
+                    Strategic Finance Student
+                </div>
+
+                <h1>
+                    Shinesh<br>
+                    <span>Kannan.</span>
+                </h1>
+
+                <div class="hero-subtitle">
+                    Finance • Investment • Financial Analysis
+                </div>
+
+                <p class="hero-description">
+                    B.Com Strategic Finance student with practical experience
+                    in financial analysis, stock market research, financial
+                    dashboards and business performance analysis.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn btn-primary">
+                        Explore My Work →
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                    </a>
+
+                </div>
+
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <button className="px-6 py-3 rounded-2xl bg-cyan-500 text-black font-semibold hover:scale-105 transition-transform">
-                Investor Mindset
-              </button>
 
-              <button className="px-6 py-3 rounded-2xl border border-gray-700 hover:bg-white hover:text-black transition-all">
-                CMA Student
-              </button>
-            </div>
-          </div>
+            <div class="finance-card reveal">
 
-          <div className="relative">
-            <div className="bg-gradient-to-br from-cyan-500 to-purple-600 p-[2px] rounded-3xl shadow-2xl shadow-cyan-500/20">
-              <div className="bg-zinc-950 rounded-3xl p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold mb-2">
-                      Professional Profile
-                    </h2>
+                <div class="finance-card-top">
 
-                    <p className="text-gray-400 leading-relaxed">
-                      Motivated B.Com (Strategic Finance) student pursuing US
-                      CMA with strong interest in finance, investing, business
-                      strategy, and entrepreneurship. Passionate about learning
-                      modern business systems, financial analysis, and long-term
-                      wealth creation.
-                    </p>
-                  </div>
+                    <span class="finance-card-title">
+                        Finance Profile
+                    </span>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                      <p className="text-gray-400 text-sm">Education</p>
+                    <span class="gold-dot"></span>
 
-                      <h3 className="text-lg font-bold mt-1">
-                        B.Com + US CMA
-                      </h3>
-                    </div>
+                </div>
 
-                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                      <p className="text-gray-400 text-sm">Specialization</p>
+                <div class="metric-main">
 
-                      <h3 className="text-lg font-bold mt-1">
-                        Strategic Finance
-                      </h3>
-                    </div>
+                    <small>
+                        Current Academic CGPA
+                    </small>
 
-                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                      <p className="text-gray-400 text-sm">Strength</p>
-
-                      <h3 className="text-lg font-bold mt-1">
-                        Analytical Thinking
-                      </h3>
-                    </div>
-
-                    <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                      <p className="text-gray-400 text-sm">Career Goal</p>
-
-                      <h3 className="text-lg font-bold mt-1">
-                        Finance & Business
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/5 rounded-2xl border border-white/10 p-5">
-                    <h3 className="text-xl font-bold mb-4">
-                      Key Advantages
+                    <h3>
+                        6.85
                     </h3>
 
-                    <ul className="space-y-3 text-gray-300">
-                      <li>
-                        • Strong interest in financial markets and investing
-                      </li>
-
-                      <li>
-                        • Quick learner with business-oriented mindset
-                      </li>
-
-                      <li>
-                        • Good communication and presentation skills
-                      </li>
-
-                      <li>
-                        • Interested in strategic finance and management
-                      </li>
-
-                      <li>
-                        • Adaptable to technology and modern tools
-                      </li>
-
-                      <li>
-                        • Focused on long-term professional growth
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills */}
-      <section className="relative z-10 px-6 md:px-16 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-10">Core Skills</h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <div
-                key={index}
-                className="bg-white/5 border border-white/10 rounded-3xl p-6 hover:translate-y-[-5px] transition-all"
-              >
-                <div className="text-cyan-400 text-3xl font-black mb-4">
-                  0{index + 1}
                 </div>
 
-                <h3 className="text-xl font-semibold">{skill}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <div class="metric-grid">
 
-      {/* Interests */}
-      <section className="relative z-10 px-6 md:px-16 py-12">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-3xl p-8">
-            <h2 className="text-3xl font-bold mb-6">Interests</h2>
+                    <div class="metric">
 
-            <div className="flex flex-wrap gap-3">
-              {interests.map((interest, index) => (
-                <span
-                  key={index}
-                  className="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/20"
-                >
-                  {interest}
-                </span>
-              ))}
-            </div>
-          </div>
+                        <small>
+                            Degree
+                        </small>
 
-          <div className="bg-gradient-to-br from-purple-500/10 to-cyan-500/10 border border-white/10 rounded-3xl p-8">
-            <h2 className="text-3xl font-bold mb-6">Future Goals</h2>
+                        <strong>
+                            B.Com
+                        </strong>
 
-            <div className="space-y-4">
-              {goals.map((goal, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 bg-black/30 rounded-2xl p-4"
-                >
-                  <div className="w-8 h-8 rounded-full bg-cyan-400 text-black font-bold flex items-center justify-center shrink-0">
-                    {index + 1}
-                  </div>
+                    </div>
 
-                  <p className="text-gray-200">{goal}</p>
+                    <div class="metric">
+
+                        <small>
+                            Specialization
+                        </small>
+
+                        <strong>
+                            Strategic Finance
+                        </strong>
+
+                    </div>
+
+                    <div class="metric">
+
+                        <small>
+                            Internship
+                        </small>
+
+                        <strong>
+                            Financial Analyst
+                        </strong>
+
+                    </div>
+
+                    <div class="metric">
+
+                        <small>
+                            Certification
+                        </small>
+
+                        <strong>
+                            NISM Investor
+                        </strong>
+
+                    </div>
+
                 </div>
-              ))}
+
             </div>
-          </div>
+
         </div>
-      </section>
 
-      {/* Quote */}
-      <section className="relative z-10 px-6 md:px-16 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-white/10 rounded-[40px] p-10">
-            <p className="text-3xl md:text-5xl font-black leading-tight">
-              “Think Long-Term. Build Bigger. Stay Consistent.”
-            </p>
-
-            <p className="text-gray-400 mt-6 text-lg">
-              — Shinesh
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 py-8 text-center text-gray-500">
-        <p>Designed by Shinesh • Future Investor & Entrepreneur</p>
-      </footer>
     </div>
-  );
-}
+
+</section>
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<div class="stats">
+
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <div class="stat-number counter" data-target="4">0</div>
+                <div class="stat-label">Finance Projects</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number counter" data-target="1">0</div>
+                <div class="stat-label">Finance Internship</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number counter" data-target="2">0</div>
+                <div class="stat-label">Job Simulations</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number counter" data-target="33">0</div>
+                <div class="stat-label">NISM Marks / 50</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="about" id="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-box reveal">
+
+                <h3>
+                    Finance-focused mindset
+                </h3>
+
+                <p>
+                    Interested in understanding businesses through
+                    financial data, market research and investment analysis.
+                </p>
+
+            </div>
+
+
+            <div class="about-content reveal">
+
+                <div class="section-label">
+                    About Me
+                </div>
+
+                <h2 class="section-title">
+                    Turning financial data into meaningful insights.
+                </h2>
+
+                <p>
+                    I am pursuing B.Com in Strategic Finance at
+                    St. Joseph’s Autonomous College, Trichy.
+                    My interests are centred around financial analysis,
+                    investment analysis and stock market research.
+                </p>
+
+                <p>
+                    I have gained practical exposure through my Financial
+                    Analyst internship at Sharp Knit Designs and through
+                    projects involving Excel, Power BI and fundamental
+                    analysis of listed companies.
+                </p>
+
+                <div class="focus-list">
+
+                    <div class="focus-item">
+                        Financial Analysis
+                    </div>
+
+                    <div class="focus-item">
+                        Investment Analysis
+                    </div>
+
+                    <div class="focus-item">
+                        Stock Market Research
+                    </div>
+
+                    <div class="focus-item">
+                        Business Analysis
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+
+<section class="education" id="education">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            Academic Background
+        </div>
+
+        <h2 class="section-title reveal">
+            Education
+        </h2>
+
+        <p class="section-description reveal">
+            Academic foundation in strategic finance with an emphasis
+            on financial and business analysis.
+        </p>
+
+
+        <div class="education-card reveal">
+
+            <div>
+
+                <h3>
+                    St. Joseph’s Autonomous College, Trichy
+                </h3>
+
+                <div class="degree">
+                    B.Com – Strategic Finance
+                </div>
+
+                <div class="education-date">
+                    2024 – 2027
+                </div>
+
+                <div class="academic-marks">
+
+                    <div class="mark">
+
+                        <strong>
+                            328
+                        </strong>
+
+                        <span>
+                            10th Marks
+                        </span>
+
+                    </div>
+
+                    <div class="mark">
+
+                        <strong>
+                            506
+                        </strong>
+
+                        <span>
+                            12th Marks
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="cgpa">
+
+                <strong>
+                    6.85
+                </strong>
+
+                <span>
+                    Current CGPA
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
+
+<section class="experience" id="experience">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            Professional Experience
+        </div>
+
+        <h2 class="section-title reveal">
+            Experience
+        </h2>
+
+        <p class="section-description reveal">
+            Practical exposure to financial management, financial
+            analysis and business performance.
+        </p>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-date">
+                    May 2026 – June 2026
+                </div>
+
+                <h3>
+                    Financial Analyst Intern
+                </h3>
+
+                <div class="timeline-company">
+                    Sharp Knit Designs
+                </div>
+
+                <ul>
+
+                    <li>
+                        Analysed financial statements and business performance.
+                    </li>
+
+                    <li>
+                        Identified opportunities to improve profitability
+                        and operational efficiency.
+                    </li>
+
+                    <li>
+                        Prepared financial analysis to support
+                        business decision-making.
+                    </li>
+
+                    <li>
+                        Gained practical exposure to financial management
+                        and business operations.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section class="projects" id="projects">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            Selected Work
+        </div>
+
+        <h2 class="section-title reveal">
+            Finance Projects
+        </h2>
+
+        <p class="section-description reveal">
+            Projects combining financial research, market analysis,
+            data visualisation and business intelligence.
+        </p>
+
+
+        <div class="project-grid">
+
+
+            <article class="project-card reveal">
+
+                <div class="project-number">
+                    01 / MARKET RESEARCH
+                </div>
+
+                <h3>
+                    Stock Market Analysis
+                </h3>
+
+                <p>
+                    Conducted fundamental analysis of listed companies
+                    using financial and market data. Evaluated company
+                    performance and investment potential.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="tag">
+                        Fundamental Analysis
+                    </span>
+
+                    <span class="tag">
+                        Financial Data
+                    </span>
+
+                    <span class="tag">
+                        Stock Research
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="project-card reveal">
+
+                <div class="project-number">
+                    02 / EXCEL
+                </div>
+
+                <h3>
+                    Financial Analysis Dashboard
+                </h3>
+
+                <p>
+                    Developed Excel-based dashboards to analyse financial
+                    data and key performance indicators using formulas,
+                    PivotTables and data visualisation techniques.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="tag">
+                        Microsoft Excel
+                    </span>
+
+                    <span class="tag">
+                        PivotTables
+                    </span>
+
+                    <span class="tag">
+                        KPIs
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="project-card reveal">
+
+                <div class="project-number">
+                    03 / INITIATIVE
+                </div>
+
+                <h3>
+                    Rupee Theory
+                </h3>
+
+                <p>
+                    Finance and investment-focused initiative involving
+                    financial-market research, stock analysis and
+                    fundamental analysis applied to real-world
+                    investment decisions.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="tag">
+                        Investment
+                    </span>
+
+                    <span class="tag">
+                        Stock Research
+                    </span>
+
+                    <span class="tag">
+                        Finance Content
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <article class="project-card reveal">
+
+                <div class="project-number">
+                    04 / BUSINESS INTELLIGENCE
+                </div>
+
+                <h3>
+                    Power BI Financial Dashboard
+                </h3>
+
+                <p>
+                    Created interactive Power BI reports for financial
+                    and business analysis and presented information
+                    through KPIs and interactive visualisations.
+                </p>
+
+                <div class="project-tags">
+
+                    <span class="tag">
+                        Power BI
+                    </span>
+
+                    <span class="tag">
+                        KPIs
+                    </span>
+
+                    <span class="tag">
+                        Data Visualisation
+                    </span>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RUPEE THEORY
+========================================================= -->
+
+<section class="rupee">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            Finance Initiative
+        </div>
+
+        <h2 class="section-title reveal">
+            Rupee Theory
+        </h2>
+
+        <p class="section-description reveal">
+            A finance and investment-focused initiative built around
+            researching financial markets and applying fundamental
+            analysis to real-world investment decisions.
+        </p>
+
+
+        <div class="rupee-grid">
+
+            <div class="rupee-symbol reveal">
+                <span>₹</span>
+            </div>
+
+
+            <div class="rupee-points reveal">
+
+                <div class="rupee-point">
+                    <strong>Research:</strong>
+                    Research and analyse stocks and financial markets.
+                </div>
+
+                <div class="rupee-point">
+                    <strong>Analysis:</strong>
+                    Apply fundamental analysis to listed companies.
+                </div>
+
+                <div class="rupee-point">
+                    <strong>Content:</strong>
+                    Develop finance and investment-focused content.
+                </div>
+
+                <div class="rupee-point">
+                    <strong>Application:</strong>
+                    Connect financial concepts with real-world
+                    investment decisions.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<section class="skills" id="skills">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            Capabilities
+        </div>
+
+        <h2 class="section-title reveal">
+            Skills
+        </h2>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card reveal">
+
+                <h3>
+                    Finance
+                </h3>
+
+                <div class="skill-list">
+
+                    <span class="skill">
+                        Financial Statement Analysis
+                    </span>
+
+                    <span class="skill">
+                        Stock Market Analysis
+                    </span>
+
+                    <span class="skill">
+                        Financial Analysis
+                    </span>
+
+                    <span class="skill">
+                        Investment Analysis
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <h3>
+                    Analytics & Tools
+                </h3>
+
+                <div class="skill-list">
+
+                    <span class="skill">
+                        Microsoft Excel
+                    </span>
+
+                    <span class="skill">
+                        Power BI
+                    </span>
+
+                    <span class="skill">
+                        Tally Prime
+                    </span>
+
+                    <span class="skill">
+                        Power Apps
+                    </span>
+
+                    <span class="skill">
+                        Power Automate
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="skill-card reveal">
+
+                <h3>
+                    Other Skills
+                </h3>
+
+                <div class="skill-list">
+
+                    <span class="skill">
+                        Website Development
+                    </span>
+
+                    <span class="skill">
+                        Photoshop
+                    </span>
+
+                    <span class="skill">
+                        Financial Research
+                    </span>
+
+                    <span class="skill">
+                        Data Visualisation
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CERTIFICATIONS
+========================================================= -->
+
+<section class="certifications" id="certifications">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            Credentials
+        </div>
+
+        <h2 class="section-title reveal">
+            Certifications & Simulations
+        </h2>
+
+        <p class="section-description reveal">
+            Selected certifications and practical job simulations
+            supporting my finance, analytics and technology skills.
+        </p>
+
+
+        <div class="cert-grid">
+
+
+            <div class="cert-card cert-highlight reveal">
+
+                <div class="cert-icon">
+                    N
+                </div>
+
+                <div>
+
+                    <h3>
+                        SEBI–NISM Investor Certification Examination
+                    </h3>
+
+                    <p>
+                        Successfully completed the investor certification
+                        examination. Marks: 33/50. Result: Pass.
+                        Test Date: 24 January 2025.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    EY
+                </div>
+
+                <div>
+
+                    <h3>
+                        EY — FAAS Job Simulation
+                    </h3>
+
+                    <p>
+                        Practical tasks covering Introduction to FAAS,
+                        IPO Readiness, Sustainability Reporting,
+                        Finance Optimization and Technical Accounting Research.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    D
+                </div>
+
+                <div>
+
+                    <h3>
+                        Deloitte — Data Analytics Job Simulation
+                    </h3>
+
+                    <p>
+                        Practical tasks in Data Analysis and
+                        Forensic Technology.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    M
+                </div>
+
+                <div>
+
+                    <h3>
+                        Copilot Studio: Advanced Agent Design
+                    </h3>
+
+                    <p>
+                        Miles Masterclass. 2 CPE credits.
+                        Information Technology. Completed April 2026.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    M
+                </div>
+
+                <div>
+
+                    <h3>
+                        Copilot for Word, PowerPoint, Outlook & Teams
+                    </h3>
+
+                    <p>
+                        Miles Masterclass. 3 CPE credits.
+                        Information Technology. Completed March 2026.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    AI
+                </div>
+
+                <div>
+
+                    <h3>
+                        Introduction to Generative AI Studio
+                    </h3>
+
+                    <p>
+                        Simplilearn SkillUp / Google Cloud course
+                        completion. September 2025.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    DM
+                </div>
+
+                <div>
+
+                    <h3>
+                        Digital Marketing Strategy
+                    </h3>
+
+                    <p>
+                        Simplilearn SkillUp course completion.
+                        September 2025.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cert-card reveal">
+
+                <div class="cert-icon">
+                    VB
+                </div>
+
+                <div>
+
+                    <h3>
+                        Viksit Bharat Young Leaders Dialogue
+                    </h3>
+
+                    <p>
+                        Ministry of Youth Affairs & Sports.
+                        Certificate of Participation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+            <div class="reveal">
+
+                <div class="section-label">
+                    Let's Connect
+                </div>
+
+                <h2 class="section-title">
+                    Interested in finance, markets and analysis?
+                </h2>
+
+                <p class="section-description">
+                    I am open to opportunities that allow me to learn,
+                    analyse and contribute in finance and business-oriented
+                    environments.
+                </p>
+
+            </div>
+
+
+            <div class="contact-details reveal">
+
+                <div class="contact-item">
+
+                    <span>
+                        Email
+                    </span>
+
+                    <a href="mailto:shineshkannan@gmail.com">
+                        shineshkannan@gmail.com
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        Phone
+                    </span>
+
+                    <a href="tel:+91900384368">
+                        +91 900384368
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        Portfolio
+                    </span>
+
+                    <a href="https://shineshkannan82-wq.github.io"
+                       target="_blank">
+                        shineshkannan82-wq.github.io
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong>
+                        Trichy, Tamil Nadu
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        © <span id="year"></span>
+        Shinesh Kannan.P
+        · Finance & Investment Portfolio
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    /* Close menu after clicking */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("active");
+
+        });
+
+    });
+
+
+    /* =========================================================
+       HEADER SCROLL
+    ========================================================= */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 30) {
+
+            header.classList.add("scrolled");
+
+        } else {
+
+            header.classList.remove("scrolled");
+
+        }
+
+    });
+
+
+    /* =========================================================
+       REVEAL ON SCROLL
+    ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("active");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       COUNTERS
+    ========================================================= */
+
+    const counters =
+        document.querySelectorAll(".counter");
+
+    let counterStarted = false;
+
+    function startCounters() {
+
+        if (counterStarted) return;
+
+        counterStarted = true;
+
+        counters.forEach(counter => {
+
+            const target =
+                Number(counter.dataset.target);
+
+            let current = 0;
+
+            const increment =
+                Math.max(1, Math.ceil(target / 40));
+
+            const updateCounter = () => {
+
+                current += increment;
+
+                if (current >= target) {
+
+                    counter.textContent = target;
+
+                    return;
+
+                }
+
+                counter.textContent = current;
+
+                requestAnimationFrame(updateCounter);
+
+            };
+
+            updateCounter();
+
+        });
+
+    }
+
+
+    const statsSection =
+        document.querySelector(".stats");
+
+    const statsObserver =
+        new IntersectionObserver(
+            entries => {
+
+                if (entries[0].isIntersecting) {
+
+                    startCounters();
+
+                }
+
+            },
+            {
+                threshold: 0.4
+            }
+        );
+
+
+    statsObserver.observe(statsSection);
+
+
+    /* =========================================================
+       FOOTER YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+</script>
+
+
+</body>
+</html>
